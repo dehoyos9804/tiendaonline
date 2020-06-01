@@ -26,4 +26,5 @@ Route::group(['middleware' => ['auth']], function(){
      * Aquí se colocan todas las rutas
      * esto hára que no se puedan acceder sin logearse
      */
+    Route::get('auth/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
 });
