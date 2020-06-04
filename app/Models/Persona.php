@@ -10,4 +10,12 @@ class Persona extends Model
    	protected $table='personas';
     protected $fillable = ['nombre', 'apellido','telefono','direccion','tipousuarios_id','users_id'];
     protected $hidden = ['created_at','updated_at'];
+
+    public function tipousuario(){
+    	return $this->belongsTo('App\Models\TipoUsuario', 'tipousuario_id');
+    }
+
+    public function users(){
+    	return $this->belongsTo('App\Models\User', 'users_id');
+    }
 }

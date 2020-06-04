@@ -10,4 +10,8 @@ class Cliente extends Model
    	protected $table='clientes';
     protected $fillable = ['identificacion', 'nombre', 'apellido','telefono','direccion'];
     protected $hidden = ['created_at','updated_at'];
+
+    public function ventas(){
+        return $this->hasMany('App\Models\Venta');
+    }
 }

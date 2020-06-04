@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUsuario extends Model
+class User extends Model
 {
     protected $primaryKey='id';
-   	protected $table='tipousuarios';
-    protected $fillable = ['nombre'];
+   	protected $table='users';
+    protected $fillable = ['name', 'email', 'apellido','telefono','direccion'];
     protected $hidden = ['created_at','updated_at'];
 
     public function persona(){
     	return $this->hasOne('App\Models\Persona');
+    }
+    public function ventas(){
+        return $this->hasMany('App\Models\Venta');
     }
 }
