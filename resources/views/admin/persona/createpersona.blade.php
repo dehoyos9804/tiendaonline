@@ -22,11 +22,11 @@
                     {!! csrf_field() !!}
                     <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">E-mail</label>
-                        <input type="text" class="form-control" name="email" placeholder="E-mail">
+                        <input type="email" class="form-control" name="email" placeholder="E-mail">
                         </div>
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Nombre</label>
