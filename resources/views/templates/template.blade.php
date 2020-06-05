@@ -157,6 +157,8 @@
                     <div id="main-wrapper">
                         @yield('contenido')
                     </div><!-- Main Wrapper -->
+                    <link href='{{url("ecaps")}}/assets/plugins/datatables/css/jquery.datatables.min.css' rel="stylesheet" type="text/css"/>	
+                    
 
                     <div class="page-footer">
                         <p>Made with <i class="fa fa-heart"></i> by skcats</p>
@@ -344,7 +346,8 @@
         <script src='{{url("ecaps")}}/assets/plugins/chartjs/chart.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
-
+        <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
+        <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
         @yield('boby-script')
     </body>
 </html>
