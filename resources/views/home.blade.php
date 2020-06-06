@@ -2,7 +2,13 @@
 @section('titulo', 'Admin | Tienda Online')
 
 @section('menu')
-  @include('templates.menu')
+
+  @if(Config::get('auth_tipo_user') == 'ADMINISTRADOR')
+    @include('templates.menu')
+  @elseif(Config::get('auth_tipo_user') == 'VENDEDOR')
+    TEST :V
+  @endif
+
 @endsection
 
 @section('head-style-script')
