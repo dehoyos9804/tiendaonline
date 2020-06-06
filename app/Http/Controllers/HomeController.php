@@ -31,6 +31,7 @@ class HomeController extends Controller
         $user = Persona::where('users_id', $id)->first();
 
         \Config::set('auth_tipo_user', $user->tipousuario->nombre);
-        return view('home');
+        //return view('home');
+        return view('admin.index');
     }
 }
