@@ -22,6 +22,7 @@
         <link href='{{url("ecaps")}}/assets/plugins/icomoon/style.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/plugins/uniform/css/default.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
+
         <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">
         <link href="assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>  
         <!-- Theme Styles -->
@@ -162,7 +163,6 @@
                     <div id="main-wrapper">
                         @yield('contenido')
                     </div><!-- Main Wrapper -->
-
                     
     
                     <div class="page-footer">

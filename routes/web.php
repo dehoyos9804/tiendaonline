@@ -82,5 +82,6 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Reportes
     Route::get('report',['as' =>'report','uses'=>'AdminController@report',]);
+    Route::name('imprimir')->get('/imprimir', 'AdminController@imprimir');
 
 });
