@@ -23,20 +23,7 @@
         <link href='{{url("ecaps")}}/assets/plugins/uniform/css/default.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">  
-        <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
-                    <script src='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js'></script>
-                    <script src='{{url("ecaps")}}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js'></script>
-    <script src='{{url("ecaps")}}/assets/plugins/uniform/js/jquery.uniform.standalone.js'></script>
-    <script src='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.js'></script>
-    <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/js/pages/form-file-upload.js'></script>
-        <!-- Theme Styles -->
-        <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
-        <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
-        <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
-        <link href='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.css' rel="stylesheet">
-        <link href='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' rel="stylesheet" type="text/css"/>
-      
+        
         @yield('head-style-script')
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -167,16 +154,7 @@
                         @yield('contenido')
                     </div><!-- Main Wrapper -->
 
-                    <script src='{{url("ecaps")}}assets/js/ecaps.min.js'></script>
-        <script src='{{url("ecaps")}}assets/js/pages/form-file-upload.js'></script>
-                    <link href='{{url("ecaps")}}/assets/plugins/datatables/css/jquery.datatables.min.css' rel="stylesheet" type="text/css"/>	
-                    <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
-                    <script src='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js'></script>
-                    <script src='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.js'></script>
-                    <script src='{{url("ecaps")}}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js'></script>
-    <script src='{{url("ecaps")}}/assets/plugins/uniform/js/jquery.uniform.standalone.js'></script>
-    <script src='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.js'></script>
-    
+                    
                     <div class="page-footer">
                         <p>Made with <i class="fa fa-heart"></i> by skcats</p>
                     </div>
@@ -365,11 +343,6 @@
         <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
-        <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/js/pages/form-file-upload.js'></script>
         
         @yield('boby-script')
     </body>

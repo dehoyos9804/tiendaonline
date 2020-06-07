@@ -38,7 +38,7 @@
                         <!-- El input para seleccionar los archivos, fíjate en su id -->
                             <input type="file" id="seleccionArchivos" accept="image/*" name="img">
                             <!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
-                            <img width="100%" height="100%" id="imagenPrevisualizacion">
+                            <img width="250px" height="200px" id="imagenPrevisualizacion">
                             <script src="script.js"></script>
                     </div>
                     <script type="text/javascript">
