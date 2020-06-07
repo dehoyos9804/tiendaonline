@@ -23,6 +23,8 @@ Auth::routes();
 //Route::get('admin/index', 'HomeController@index')->name('index');
 Route::get('home', ['as'=>'admin.index', 'uses'=>'HomeController@index']);
 
+Route::name('imprimir')->get('/imprimir', 'AdminController@imprimir');
+
 $router->get('report',['as' =>'report','uses'=>'AdminController@report',]);
 
 

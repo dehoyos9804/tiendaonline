@@ -11,6 +11,8 @@ use Image;
 use App\Models\Producto;
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -38,6 +40,14 @@ class AdminController extends Controller
     {
         return view('report');
     }
+
+    public function imprimir(){
+        $today = Carbon::now()->format('d/m/Y');
+        $pdf = \PDF::loadView('report');
+        return $pdf->download('report.pdf');
+    }
+
+    
 
     public function listaproveedores()
     {
