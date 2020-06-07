@@ -23,13 +23,27 @@ Auth::routes();
 //Route::get('admin/index', 'HomeController@index')->name('index');
 Route::get('home', ['as'=>'admin.index', 'uses'=>'HomeController@index']);
 
+$router->get('report',['as' =>'report','uses'=>'AdminController@report',]);
+
+//Producto
+$router->get('admin/producto/listaproductos',['as' =>'admin.producto.listaproductos','uses'=>'AdminController@listaproductos',]);
+
+$router->get('admin/producto/createproducto',['as'=>'admin.producto.createproducto','uses'=>'AdminController@createproducto',]);
+
+$router->post('admin/producto/storeproducto',['as'=>'admin.producto.storeproducto', 'uses'=>'AdminController@storeproducto',]);
+
+$router->get('admin/producto/{id}/editproducto',['as' =>'admin.producto.editproducto','uses'=>'AdminController@editproducto',]);
+
+$router->patch('admin/producto/{id}', ['as' =>'admin.producto.updateproducto','uses'=>'AdminController@updateproducto',]);
+
+$router->get('admin/producto/{id}/deleteproducto', ['as' =>'admin.producto.deleteproducto','uses'=> 'AdminController@deleteproducto',]);
+
 Route::group(['middleware' => ['auth']], function(){
     /**@TODO:
      * Aquí se colocan todas las rutas
      * esto hára que no se puedan acceder sin logearse
      */
     Route::get('auth/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
-
     //Proveedores
     Route::get('admin/proveedor/listaproveedores',['as' =>'admin.proveedor.listaproveedores','uses'=>'AdminController@listaproveedores',]);
     Route::get('admin/proveedor/createproveedor',['as'=>'admin.proveedor.createproveedor','uses'=>'AdminController@createproveedor',]);
@@ -66,4 +80,5 @@ Route::group(['middleware' => ['auth']], function(){
     //Compras
     Route::get('admin/compras/registrar',['as' =>'admin.compra.index','uses'=>'CompraController@index',]);
     Route::post('admin/compras/store', ['as'=>'admin.compra.store', 'uses'=>'CompraController@store',]);
+
 });

@@ -49,7 +49,7 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
