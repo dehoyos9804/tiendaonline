@@ -42,7 +42,7 @@ class AdminController extends Controller
     }
 
     public function myShare($id){
-        $user = Persona::where('users_id', $id)->first();
+        $user = Persona::where('user_id', $id)->first();
         \View::share('user_auth', $user);
     }
 
@@ -76,13 +76,13 @@ class AdminController extends Controller
     {
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
         $proveedor = new Proveedor;//llama al modelo usuario
-            $proveedor->nit = $request->input('nit'); 
-            $proveedor->razonsocial = $request->input('razonsocial');
-            $proveedor->telefono = $request->input('telefono');
-            $proveedor->direccion = $request->input('direccion');
-            $proveedor->save();//guarda los datos
+        $proveedor->nit = $request->input('nit'); 
+        $proveedor->razonsocial = $request->input('razonsocial');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->direccion = $request->input('direccion');
+        $proveedor->save();//guarda los datos
             
-            return redirect()->route('admin.proveedor.listaproveedores');//redirige a la vista lista 
+        return redirect()->route('admin.proveedor.listaproveedores');//redirige a la vista lista 
         
     }
 
@@ -99,12 +99,12 @@ class AdminController extends Controller
         $proveedor = Proveedor::find($id); //recibe los datos
         $datos = array();//array de datos
         
-          $datos['nit']=$request->input('nit'); //
-          $datos['razonsocial']=$request->input('razonsocial');                 
-          $datos['telefono']=$request->input('telefono');             //datos que esten
-          $datos['direccion']=$request->input('direccion');           //en el formulario
+        $datos['nit']=$request->input('nit'); //
+        $datos['razonsocial']=$request->input('razonsocial');                 
+        $datos['telefono']=$request->input('telefono');             //datos que esten
+        $datos['direccion']=$request->input('direccion');           //en el formulario
           
-          $proveedor->update($datos); //envia a actualizar
+        $proveedor->update($datos); //envia a actualizar
         return redirect()->route('admin.proveedor.listaproveedores');//redirige a la vista lista usuarios
     }
 
@@ -261,7 +261,7 @@ class AdminController extends Controller
         $persona->telefono = $request->input('telefono');
         $persona->direccion = $request->input('direccion');
         $persona->tipousuario_id = $request->input('tipousuario_id');
-        $persona->users_id = $coduser->id;
+        $persona->user_id = $coduser->id;
         $persona->save();//guarda los datos
 
         return redirect()->route('admin.persona.listapersonas');//redirige a la vista lista    
@@ -293,6 +293,7 @@ class AdminController extends Controller
 
     public function listaproductos()
     {
+        $this->myShare(Auth::id());
         $productos = Producto::all();  //obtiene todos los usuarios de la base de datos
         return view('admin.producto.listaproductos', ['productos' => $productos]);//
     }
@@ -306,6 +307,7 @@ class AdminController extends Controller
 
     public function createproducto()
     {
+        $this->myShare(Auth::id());
         $varseccion = Seccion::all();  //captura el id del usuario
         return view('admin.producto.createproducto')->with('varseccion',$varseccion);
     }
@@ -325,7 +327,7 @@ class AdminController extends Controller
         $producto->cantidad = $request->input('cantidad');
         $producto->precioventa = $request->input('precioventa');
         $producto->estado = $request->input('estado');
-        $producto->secciones_id = $request->input('secciones_id');
+        $producto->seccion_id = $request->input('secciones_id');
         
         //return response()->json($producto);
         // return response()->json($datos['img']);
@@ -336,9 +338,10 @@ class AdminController extends Controller
 
     public function editproducto($id)
     {
-      $producto = Producto::find($id); 
-      $varseccion = Seccion::all(); 
-      return view('admin.producto.editproducto')->with(['producto'=>$producto])->with('varseccion',$varseccion);;
+        $this->myShare(Auth::id());
+        $producto = Producto::find($id); 
+        $varseccion = Seccion::all(); 
+        return view('admin.producto.editproducto')->with(['producto'=>$producto])->with('varseccion',$varseccion);;
     }
 
     //funcion para guardar los nuevos datos del usuario en la vista editar 
@@ -352,7 +355,7 @@ class AdminController extends Controller
         $datos['cantidad']=$request->input('cantidad'); 
         $datos['precioventa']=$request->input('precioventa');
         $datos['estado']=$request->input('estado');          //en el formulario
-        $datos['secciones_id']=$request->input('secciones_id');
+        $datos['seccion_id']=$request->input('secciones_id');
         
         $producto->update($datos); //envia a actualizar
         return redirect()->route('admin.producto.listaproductos');//redirige a la vista lista usuarios

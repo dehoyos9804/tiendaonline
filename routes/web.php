@@ -21,28 +21,15 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('admin/index', 'HomeController@index')->name('index');
-Route::get('home', ['as'=>'admin.index', 'uses'=>'HomeController@index']);
-
-$router->get('report',['as' =>'report','uses'=>'AdminController@report',]);
-
-//Producto
-$router->get('admin/producto/listaproductos',['as' =>'admin.producto.listaproductos','uses'=>'AdminController@listaproductos',]);
-
-$router->get('admin/producto/createproducto',['as'=>'admin.producto.createproducto','uses'=>'AdminController@createproducto',]);
-
-$router->post('admin/producto/storeproducto',['as'=>'admin.producto.storeproducto', 'uses'=>'AdminController@storeproducto',]);
-
-$router->get('admin/producto/{id}/editproducto',['as' =>'admin.producto.editproducto','uses'=>'AdminController@editproducto',]);
-
-$router->patch('admin/producto/{id}', ['as' =>'admin.producto.updateproducto','uses'=>'AdminController@updateproducto',]);
-
-$router->get('admin/producto/{id}/deleteproducto', ['as' =>'admin.producto.deleteproducto','uses'=> 'AdminController@deleteproducto',]);
 
 Route::group(['middleware' => ['auth']], function(){
     /**@TODO:
      * Aquí se colocan todas las rutas
      * esto hára que no se puedan acceder sin logearse
      */
+    Route::get('home', ['as'=>'admin.index', 'uses'=>'HomeController@index']);
+
+    
     Route::get('auth/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
     //Proveedores
     Route::get('admin/proveedor/listaproveedores',['as' =>'admin.proveedor.listaproveedores','uses'=>'AdminController@listaproveedores',]);
@@ -77,8 +64,23 @@ Route::group(['middleware' => ['auth']], function(){
     Route::patch('admin/persona/{id}', ['as' =>'admin.persona.updatepersona','uses'=>'AdminController@updatepersona',]);
     Route::get('admin/persona/{id}/deletepersona', ['as' =>'admin.persona.deletepersona','uses'=> 'AdminController@deletepersona',]);
 
+    //Producto
+    Route::get('admin/producto/listaproductos',['as' =>'admin.producto.listaproductos','uses'=>'AdminController@listaproductos',]);
+    Route::get('admin/producto/createproducto',['as'=>'admin.producto.createproducto','uses'=>'AdminController@createproducto',]);
+    Route::post('admin/producto/storeproducto',['as'=>'admin.producto.storeproducto', 'uses'=>'AdminController@storeproducto',]);
+    Route::get('admin/producto/{id}/editproducto',['as' =>'admin.producto.editproducto','uses'=>'AdminController@editproducto',]);
+    Route::patch('admin/producto/{id}', ['as' =>'admin.producto.updateproducto','uses'=>'AdminController@updateproducto',]);
+    Route::get('admin/producto/{id}/deleteproducto', ['as' =>'admin.producto.deleteproducto','uses'=> 'AdminController@deleteproducto',]);
+
     //Compras
-    Route::get('admin/compras/registrar',['as' =>'admin.compra.index','uses'=>'CompraController@index',]);
+    Route::get('admin/compras/registrar/{isGuardado}',['as' =>'admin.compra.index','uses'=>'CompraController@index',]);
     Route::post('admin/compras/store', ['as'=>'admin.compra.store', 'uses'=>'CompraController@store',]);
+
+    //Ventas
+    Route::get('admin/ventas/registrar/{isGuardado}',['as' =>'venta.index','uses'=>'VentaController@index',]);
+    Route::post('admin/ventas/store', ['as'=>'venta.store', 'uses'=>'VentaController@store',]);
+
+    //Reportes
+    Route::get('report',['as' =>'report','uses'=>'AdminController@report',]);
 
 });

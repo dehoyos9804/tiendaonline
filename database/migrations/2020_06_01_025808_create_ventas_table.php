@@ -16,12 +16,11 @@ class CreateVentasTable extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->integer('clientes_id')->unsigned();
-            $table->integer('users_id')->unsigned();
-            $table->double('descuento');
+            $table->integer('cliente_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->double('total');
-            $table->foreign('clientes_id')->references('id')->on('clientes')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

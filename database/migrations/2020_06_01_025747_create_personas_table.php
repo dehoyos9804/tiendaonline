@@ -20,9 +20,9 @@ class CreatePersonasTable extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->integer('tipousuario_id')->unsigned();
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('tipousuario_id')->references('id')->on('tipousuarios')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

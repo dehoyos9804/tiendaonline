@@ -22,14 +22,13 @@
         <link href='{{url("ecaps")}}/assets/plugins/icomoon/style.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/plugins/uniform/css/default.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
-        <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">  
+        <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">
+        <link href="assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>  
         <!-- Theme Styles -->
         <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
 
-        <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
-        <link href='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.css' rel="stylesheet">
-        <link href='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' rel="stylesheet" type="text/css"/>
+        <link href='{{url("ecaps")}}/assets/plugins/datatables/css/jquery.datatables.min.css' rel="stylesheet" type="text/css"/>
 
         <!--https://select2.org/-->
 	    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
@@ -50,9 +49,9 @@
             <!-- Page Sidebar -->
             <div class="page-sidebar">
                 <a class="logo-box" href="index.html">
-                    <span>ecaps</span>
-                    <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
-                    <i class="icon-close" id="sidebar-toggle-button-close"></i>
+                    <span>R.D! Todo lo Mejor para ti</span>
+                    <!--<i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
+                    <i class="icon-close" id="sidebar-toggle-button-close"></i>-->
                 </a>
                 <div class="page-sidebar-inner">
                     <div class="page-sidebar-menu">
@@ -133,7 +132,7 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src='{{url("ecaps")}}/assets/images/avatar.jpg' alt="profile username" class="img-circle"></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src='{{url("ecaps")}}/assets/images/logoprincipal.png' alt="profile username" class="img-circle"></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ route('user.profile') }}">Profile</a></li>
                                             <li><a href="#">Calendar</a></li>
@@ -350,12 +349,12 @@
         <script src='{{url("ecaps")}}/assets/plugins/flot/jquery.flot.tooltip.min.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/flot/jquery.flot.pie.min.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/chartjs/chart.min.js'></script>
+        <script src="assets/plugins/summernote-master/summernote.min.js"></script>
+        
         <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
-        
-        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script>
@@ -363,6 +362,9 @@
                 $('.search-select').select2();
             });
         </script>
+
+        <!--https://sweetalert.js.org/guides/-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         @yield('boby-script')
     </body>

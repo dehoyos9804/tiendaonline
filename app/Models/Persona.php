@@ -8,7 +8,7 @@ class Persona extends Model
 {
     protected $primaryKey='id';
    	protected $table='personas';
-    protected $fillable = ['nombre', 'apellido','telefono','direccion','tipousuario_id','users_id'];
+    protected $fillable = ['nombre', 'apellido','telefono','direccion','tipousuario_id','user_id'];
     protected $hidden = ['created_at','updated_at'];
 
     public function tipousuario(){
@@ -16,6 +16,6 @@ class Persona extends Model
     }
 
     public function users(){
-    	return $this->belongsTo('App\Models\User', 'users_id');
+    	return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

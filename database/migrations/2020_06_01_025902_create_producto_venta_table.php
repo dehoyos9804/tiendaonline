@@ -16,11 +16,11 @@ class CreateProductoVentaTable extends Migration
         Schema::create('producto_venta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cantidad');
-            $table->integer('ventas_id')->unsigned();
-            $table->integer('productos_id')->unsigned();
+            $table->integer('venta_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
             $table->double('total');
-            $table->foreign('ventas_id')->references('id')->on('ventas')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('productos_id')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('venta_id')->references('id')->on('ventas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

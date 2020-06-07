@@ -17,10 +17,10 @@ class CreateCompraProductoTable extends Migration
             $table->increments('id');
             $table->integer('cantidad');
             $table->double('total');
-            $table->integer('compras_id')->unsigned();
-            $table->integer('productos_id')->unsigned();
-            $table->foreign('compras_id')->references('id')->on('compras')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('productos_id')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('compra_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->foreign('compra_id')->references('id')->on('compras')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

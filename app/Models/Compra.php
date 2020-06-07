@@ -8,11 +8,11 @@ class Compra extends Model
 {
     protected $primaryKey='id';
    	protected $table='compras';
-    protected $fillable = ['fecha','descuento','total', 'proveedores_id'];
+    protected $fillable = ['fecha','total', 'proveedor_id'];
     protected $hidden = ['created_at','updated_at'];
 
     public function proveedor(){
-    	return $this->belongsTo('App\Models\Proveedor', 'proveedores_id');
+    	return $this->belongsTo('App\Models\Proveedor', 'proveedor_id');
     }
 
     public function productos(){

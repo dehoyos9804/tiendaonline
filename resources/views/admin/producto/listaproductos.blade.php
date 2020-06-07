@@ -2,7 +2,11 @@
 @section('titulo', 'Admin | Tienda Online')
 
 @section('menu')
-  @include('templates.menuadmin')
+  @if($user_auth->tipousuario->nombre == 'ADMINISTRADOR')
+    @include('templates.menuadmin')
+  @elseif($user_auth->tipousuario->nombre == 'VENDEDOR')
+    @include('templates.menu')
+  @endif
 @endsection
 
 @section('head-style-script')
@@ -28,6 +32,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Marca</th>
                                 <th>Precio Compra</th>
@@ -40,6 +45,9 @@
                         <tbody>
                             <tr>
                                 <td>{{ $producto->id }}</td>
+                                <td>
+                                    <img src='/storage/{{$producto->img}}' alt="imagen producto" style="head:32px; width:32px;">
+                                </td>
                                 <td>{{ $producto->nombre }}</td>
                                 <td>{{ $producto->marca }}</td>
                                 <td>{{ $producto->preciocompra }}</td>

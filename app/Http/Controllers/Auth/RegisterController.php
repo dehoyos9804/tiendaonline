@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'telefono'=>'',
             'direccion'=>'',
             'tipousuario_id'=>1,
-            'users_id'=>$user->id
+            'user_id'=>$user->id
         ]);
         return $user; 
     }

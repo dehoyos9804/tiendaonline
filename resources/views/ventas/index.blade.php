@@ -17,21 +17,21 @@
     <div class="col-md-12">
         <div class="panel panel-white">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title">Registro de Compra</h3>
+                <h3 class="panel-title">Registro de Venta</h3>
             </div>
             <input type="hidden" id="isGuardado" value="{{$isGuardado}}">
 
             <div class="panel-body user-profile-panel">
-                <form method="POST" action="{{ route('admin.compra.store') }}">
+                <form method="POST" action="{{ route('venta.store') }}">
                     {!! csrf_field() !!}
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="panel panel-white">
                             <div class="panel-heading clearfix">
                                 <h3 class="panel-title text-left">Datos de la facturación</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <label for="fecha">Fecha Compra</label>
+                                    <label for="fecha">Fecha venta</label>
                                     <div style="margin-bottom:15px;" class="input-group">
                                         <span class="input-group-addon" id="icon"><i class="fa fa-calendar"></i></span>
                                         <input type="date" class="form-control" id="fecha" name="fecha" aria-describedby="basic-addon1" required>
@@ -41,21 +41,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="panel panel-white">
                             <div class="panel-heading clearfix">
-                                <h3 class="panel-title text-left">Datos del proveedor</h3>
+                                <h3 class="panel-title text-left">Datos del Cliente</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <label for="fecha">Proveedor</label>
+                                    <label for="fecha">Cliente</label>
                                     <!--<select class="form-control search-select">
                                     </select>-->
                                     <div style="margin-bottom:15px;" class="input-group">
                                         <span class="input-group-addon" id="icon"><i class="fa fa-calendar"></i></span>
-                                        <select class="form-control search-select" name="proveedor" id="proveedor" required>
-                                            @foreach($proveedores as $key)
-                                                <option value="{{$key->id}}">{{$key->nit}} - {{$key->razonsocial}}</option>
+                                        <select class="form-control search-select" name="cliente" id="cliente" required>
+                                            @foreach($clientes as $key)
+                                                <option value="{{$key->id}}">{{$key->identificacion}} - {{$key->nombre}} {{$key->apellido}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-white">
+                            <div class="panel-heading clearfix">
+                                <h3 class="panel-title text-left">Datos del Vendedor</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="fecha">Vendedor</label>
+                                    <!--<select class="form-control search-select">
+                                    </select>-->
+                                    <div style="margin-bottom:15px;" class="input-group">
+                                        <span class="input-group-addon" id="icon"><i class="fa fa-calendar"></i></span>
+                                        <select class="form-control search-select" name="vendedor" id="vendedor" required>
+                                            @foreach($vendedores as $key)
+                                                @if($key->users->id == $auth)
+                                                    <option value="{{$key->users->id}}" selected>{{$key->nombre}} - {{$key->apellido}}</option>
+                                                @else
+                                                    <option value="{{$key->users->id}}">{{$key->nombre}} - {{$key->apellido}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -78,7 +104,7 @@
                                         <select class="form-control search-select" name="producto" id="producto">
                                             <option selected value="0" disabled>Seleccionar</option>
                                             @foreach($productos as $key)
-                                                <option value="{{$key->id}}_{{$key->nombre}}_{{$key->marca}}_{{$key->preciocompra}}_{{$key->img}}">{{$key->id}} - {{$key->nombre}}</option>
+                                                <option value="{{$key->id}}_{{$key->nombre}}_{{$key->marca}}_{{$key->precioventa}}_{{$key->img}}_{{$key->cantidad}}">{{$key->id}} - {{$key->nombre}} - {{$key->marca}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -93,21 +119,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="fecha">Precio Compra</label>
+                                    <label for="fecha">Precio Venta</label>
                                     <!--<select class="form-control search-select">
                                     </select>-->
                                     <div style="margin-bottom:15px;" class="input-group">
                                         <span class="input-group-addon" id="icon"><i class="fa fa-cart-plus"></i></span>
-                                        <input type="number" class="form-control" step="0.001" id="preciocompra" name="preciocompra">
+                                        <input type="number" class="form-control" step="0.001" id="precioventa" name="precioventa">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="fecha">Marca</label>
+                                    <label for="fecha">Cant. Bodega</label>
                                     <!--<select class="form-control search-select">
                                     </select>-->
                                     <div style="margin-bottom:15px;" class="input-group">
                                         <span class="input-group-addon" id="icon"><i class="fa fa-certificate"></i></span>
-                                        <input type="text" class="form-control" id="marca" name="marca" disabled>
+                                        <input type="number" class="form-control" id="cantidadbg" name="cantidadbg" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-2">
@@ -165,7 +191,7 @@
 <script>
     $(document).ready(function(){
         if($('#isGuardado').val() == '1'){
-            swal("Buen Trabajo!", "Compra Guardada Correctamente", "success");   
+            swal("Buen Trabajo!", "Venta Guardada Correctamente", "success");   
         }
     });
     var total = 0;
@@ -174,9 +200,10 @@
     var producto_id;
     var producto_nombre;
     var producto_marca;
-    var producto_precio_compra;
+    var producto_precio_venta;
     var producto;
     var producto_img;
+    var cantidad_bodega;
 
     var array_subtotal = [];
     var producto_cantidad;
@@ -192,12 +219,14 @@
         producto_id = data[0];
         producto_nombre = data[1];
         producto_marca = data[2];
-        producto_precio_compra = data[3];
+        producto_precio_venta = data[3];
         producto_img = data[4];
 
+        producto_bodega = data[5];
+
         $('#cantidad').val('1');
-        $('#preciocompra').val(producto_precio_compra);
-        $('#marca').val(producto_marca);
+        $('#precioventa').val(producto_precio_venta);
+        $('#cantidadbg').val(producto_bodega);
     });
     $('#btn_agregar').on('click', function(){
         agregar();
@@ -208,36 +237,45 @@
             //calculo el subtotal del producto
             producto_cantidad = $('#cantidad').val();
             if(producto_cantidad > 0){
-                array_subtotal[contador] = (producto_cantidad*producto_precio_compra);
-                total += array_subtotal[contador];
+                producto_bodega = $('#cantidadbg').val();
 
-            //if(!updateRow()){//verifica si un producto se actualiza o se inserta un nuevo producto
-                array_control[contador] = {'producto_id':producto_id,'index':contador ,'cantidad':producto_cantidad, 'precio_compra':producto_precio_compra};
-                //crear nueva fila para la tabla
-                var fila = '<tr id="trfila' + contador + '">'+
-                    '<td class="text-center" id="td_id_'+contador +'"><input type="hidden" name="producto_id[]" id="input_id_'+contador +'" value="' + producto_id+'">' + (contador+1) +'</td>' +
-                    '<td>' +
-                    ' <img src="/storage/' + producto_img  +'" alt="imagen producto" style="head:32px; width:32px;">' +
-                    '</td>' +
-                    '<td class="text-center" id="td_nombre_'+contador +'"><input type="hidden" name="producto_nombre[]" id="input_nombre_'+contador +'" value="' +producto_nombre + '">' + producto_nombre +'</td>' +
-                    '<td class="text-center" id="td_marca_'+contador +'"><input type="hidden" name="producto_marca[]" id="input_marca_'+contador +'" value="' + producto_marca + '">' + producto_marca +'</td>' +
-                    '<td class="text-center" id="td_preciocompra_'+contador +'"><input type="hidden" name="producto_precio_compra[]" id="input_preciocompra_'+contador +'" value="' + producto_precio_compra +'"> $'+ producto_precio_compra +'</td>' +
-                    '<td class="text-center" id="td_cantidad_'+contador +'"><input type="hidden" name="producto_cantidad[]" id="input_cantidad_'+contador +'" value="'+ producto_cantidad +'">' + producto_cantidad +'</td>' +
-                    '<td class="text-center" id="td_subtotal_'+contador +'"><input type="hidden" name="producto_subtotal[]" id="input_subtotal_'+contador +'" value="' + array_subtotal[contador] +'"> $' + array_subtotal[contador] +'</td>' +
-                    '<td class="text-center">' +
-                        '<a type="button" class="btn btn-danger btn-sm fa fa-trash-o" onclick="eliminarRow('+contador+');">Eliminar</a>' +
-                        '</td>' +
-                    '</tr>';
 
-                contador++;
+                if(parseInt(producto_cantidad) < parseInt(producto_bodega)){
+                    array_subtotal[contador] = (producto_cantidad*producto_precio_venta);
+                    total += array_subtotal[contador];
 
-                $('#table_detalle > tbody:last').append(fila);//agrego una nueva fila en la tabla detalle
-                $('#total').val(total);
-                //$('#table_detalle').dataTable();//agregar dataTable
+                    //if(!updateRow()){//verifica si un producto se actualiza o se inserta un nuevo producto
+                    array_control[contador] = {'producto_id':producto_id,'index':contador ,'cantidad':producto_cantidad, 'precio_venta':producto_precio_venta};
+                    //crear nueva fila para la tabla
+                    var fila = '<tr id="trfila' + contador + '">'+
+                        '<td class="text-center" id="td_id_'+contador +'"><input type="hidden" name="producto_id[]" id="input_id_'+contador +'" value="' + producto_id+'">' + (contador+1) +'</td>' +
+                        '<td>' +
+                            ' <img src="/storage/' + producto_img  +'" alt="imagen producto" style="head:32px; width:32px;">' +
+                            '</td>' +
+                        '<td class="text-center" id="td_nombre_'+contador +'"><input type="hidden" name="producto_nombre[]" id="input_nombre_'+contador +'" value="' +producto_nombre + '">' + producto_nombre +'</td>' +
+                        '<td class="text-center" id="td_marca_'+contador +'"><input type="hidden" name="producto_marca[]" id="input_marca_'+contador +'" value="' + producto_marca + '">' + producto_marca +'</td>' +
+                        '<td class="text-center" id="td_precioventa_'+contador +'"><input type="hidden" name="producto_precio_venta[]" id="input_precioventa_'+contador +'" value="' + producto_precio_venta +'"> $'+ producto_precio_venta +'</td>' +
+                        '<td class="text-center" id="td_cantidad_'+contador +'"><input type="hidden" name="producto_cantidad[]" id="input_cantidad_'+contador +'" value="'+ producto_cantidad +'">' + producto_cantidad +'</td>' +
+                        '<td class="text-center" id="td_subtotal_'+contador +'"><input type="hidden" name="producto_subtotal[]" id="input_subtotal_'+contador +'" value="' + array_subtotal[contador] +'"> $' + array_subtotal[contador] +'</td>' +
+                        '<td class="text-center">' +
+                            '<a type="button" class="btn btn-danger btn-sm fa fa-trash-o" onclick="eliminarRow('+contador+');">Eliminar</a>' +
+                            '</td>' +
+                        '</tr>';
 
-                evaluar();
+                    contador++;
 
-            /*}*/
+                    $('#table_detalle > tbody:last').append(fila);//agrego una nueva fila en la tabla detalle
+                    $('#total').val(total);
+                    //$('#table_detalle').dataTable();//agregar dataTable
+
+                    evaluar();
+
+                    /*}*/
+
+                }else{
+                    swal("Notificación", "No hay suficientes cantidades en bodega, cantidad a vender supera la cantidad en bodega", "error");
+                }
+                
             }else{
                 swal("Notificación", "ERROR, debes agregar cantidades mayores que 0", "error");
             }

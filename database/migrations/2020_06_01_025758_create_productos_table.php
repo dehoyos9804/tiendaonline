@@ -22,8 +22,8 @@ class CreateProductosTable extends Migration
             $table->double('precioventa');
             $table->integer('cantidad');
             $table->string('estado');
-            $table->integer('secciones_id')->unsigned();
-            $table->foreign('secciones_id')->references('id')->on('secciones')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('seccion_id')->unsigned();
+            $table->foreign('seccion_id')->references('id')->on('secciones')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

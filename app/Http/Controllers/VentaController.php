@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venta;
 use Illuminate\Http\Request;
 use App\Models\Compra;
 use App\Models\Persona;
+use App\Models\Cliente;
 use App\Models\Proveedor;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
-class CompraController extends Controller
+class VentaController extends Controller
 {
     public function myShare($id){
         $user = Persona::where('user_id', $id)->first();
         \View::share('user_auth', $user);
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,11 +25,14 @@ class CompraController extends Controller
     public function index($isGuardado)
     {
         $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
-        $proveedores = Proveedor::all();
+        $auth = Auth::id();
         $productos = Producto::all();
+        //$vendedores = Persona::where('tipousuario_id', 2)->get();
+        $vendedores = Persona::all();
+        $clientes = Cliente::all();
 
-        return view('admin.compras.index')
-            ->with(['isGuardado'=>$isGuardado, 'proveedores'=>$proveedores, 'productos'=>$productos]);
+        return view('ventas.index')
+            ->with(['isGuardado'=>$isGuardado,'auth'=>$auth,'productos'=>$productos, 'vendedores'=>$vendedores, 'clientes'=>$clientes]);
     }
 
     /**
@@ -49,34 +53,34 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //guardar la compra
-        $compra = new Compra;
-        $compra->fecha = $request->input('fecha');
-        $compra->total = $request->input('total');
-        $compra->proveedor_id = $request->input('proveedor');
-        $compra->save();
+        //guardar la venta
+        $venta = new Venta;
+        $venta->fecha = $request->input('fecha');
+        $venta->cliente_id = $request->input('cliente');
+        $venta->user_id = $request->input('vendedor');
+        $venta->total = $request->input('total');
 
-        if($compra){
-            //guardo el detalle de la compra
+        if($venta->save()){
+            //agrego el detalle
             $productos = $request->input('producto_id');
             $cantidades = $request->input('producto_cantidad');
             $total = $request->input('producto_subtotal');
 
             for($i = 0; $i < count($productos); $i++){
-                $compra->productos()->attach($productos[$i],['cantidad'=>$cantidades[$i],'total'=>$total[$i]]);
+                $venta->productos()->attach($productos[$i],['cantidad'=>$cantidades[$i],'total'=>$total[$i]]);
             }
 
-            return redirect()->route('admin.compra.index',['isGuardado'=>'1']);
+            return redirect()->route('venta.index',['isGuardado'=>'1']);
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Venta $venta)
     {
         //
     }
@@ -84,10 +88,10 @@ class CompraController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Venta $venta)
     {
         //
     }
@@ -96,10 +100,10 @@ class CompraController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Venta $venta)
     {
         //
     }
@@ -107,10 +111,10 @@ class CompraController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Venta $venta)
     {
         //
     }

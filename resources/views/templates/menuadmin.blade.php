@@ -49,7 +49,16 @@
             <i class="menu-icon icon-code"></i><span>Compras</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
-            <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.compra.index')}}"> Nueva Compra</a></li>
+            <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.compra.index', ['isGuardado'=>'0'])}}"> Nueva Compra</a></li>
+            <li><a class="menu-icon fa fa-table" href="form-wizard.html"> Lista Compras</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:void(0)">
+            <i class="menu-icon icon-code"></i><span>Ventas</span><i class="accordion-icon fa fa-angle-left"></i>
+        </a>
+        <ul class="sub-menu">
+            <li><a class="menu-icon fa fa-plus-square" href="{{ route('venta.index', ['isGuardado'=>'0'])}}"> Nueva Venta</a></li>
             <li><a class="menu-icon fa fa-table" href="form-wizard.html"> Lista Compras</a></li>
         </ul>
     </li>
