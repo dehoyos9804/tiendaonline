@@ -101,9 +101,10 @@
                             @endforeach
                         </select>
                         </div>
+                            <div class="col-md-8"></div>
+                                <button class="btn btn-primary" type="submit" id="btn-guardar">Guardar</button>
+                                <a href="{{ route('admin.producto.listaproductos') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
                     </div>
                     </form>
                 </div>

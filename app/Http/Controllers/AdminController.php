@@ -34,6 +34,11 @@ class AdminController extends Controller
         //
     }
 
+    public function report()
+    {
+        return view('report');
+    }
+
     public function listaproveedores()
     {
         $proveedores = Proveedor::all();  //obtiene todos los usuarios de la base de datos

@@ -23,6 +23,9 @@ Auth::routes();
 //Route::get('admin/index', 'HomeController@index')->name('index');
 Route::get('home', ['as'=>'admin.index', 'uses'=>'HomeController@index']);
 
+$router->get('report',['as' =>'report','uses'=>'AdminController@report',]);
+
+
 //Proveedores
 $router->get('admin/proveedor/listaproveedores',['as' =>'admin.proveedor.listaproveedores','uses'=>'AdminController@listaproveedores',]);
 
@@ -96,6 +99,6 @@ Route::group(['middleware' => ['auth']], function(){
      */
     Route::get('auth/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
 
-    
+
 
 });
