@@ -9,6 +9,7 @@ use App\Models\Cliente;
 use App\Models\User;
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -17,9 +18,15 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {   
+
+    }
+
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -32,8 +39,15 @@ class AdminController extends Controller
         //
     }
 
+    public function myShare($id){
+        $user = Persona::where('users_id', $id)->first();
+        \View::share('user_auth', $user);
+    }
+
     public function listaproveedores()
     {
+        $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
+
         $proveedores = Proveedor::all();  //obtiene todos los usuarios de la base de datos
         return view('admin.proveedor.listaproveedores', ['proveedores' => $proveedores]);//
     }
@@ -47,6 +61,7 @@ class AdminController extends Controller
 
     public function createproveedor()
     {
+        $this->myShare(Auth::id());
         return view('admin.proveedor.createproveedor');
     }
 
@@ -66,6 +81,7 @@ class AdminController extends Controller
 
     public function editproveedor($id)
     {
+      $this->myShare(Auth::id());
       $proveedor = Proveedor::find($id);  
       return view('admin.proveedor.editproveedor')->with(['proveedor'=>$proveedor]);
     }
@@ -87,12 +103,13 @@ class AdminController extends Controller
 
     public function listasecciones()
     {
+        $this->myShare(Auth::id());
         $secciones = Seccion::all();  //obtiene todos los usuarios de la base de datos
         return view('admin.seccion.listasecciones', ['secciones' => $secciones]);//
     }
 
     public function deleteseccion($id)
-    { 
+    {
       $secciones = Seccion::find($id);  //captura el id del usuario
       $secciones->delete();//envia a eliminar dicho usuario
       return redirect()->route('admin.seccion.listasecciones');
@@ -100,6 +117,7 @@ class AdminController extends Controller
 
     public function createseccion()
     {
+        $this->myShare(Auth::id());
         return view('admin.seccion.createseccion');
     }
 
@@ -107,35 +125,39 @@ class AdminController extends Controller
     {
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
         $seccion = new Seccion;//llama al modelo usuario
-            $seccion->nombre = $request->input('nombre');
-            $seccion->descripcion = $request->input('descripcion');
-            $seccion->save();//guarda los datos
+        $seccion->nombre = $request->input('nombre');
+        $seccion->descripcion = $request->input('descripcion');
+        $seccion->save();//guarda los datos
             
-            return redirect()->route('admin.seccion.listasecciones');//redirige a la vista lista 
+        return redirect()->route('admin.seccion.listasecciones');//redirige a la vista lista 
         
     }
 
     public function editseccion($id)
     {
-      $seccion = Seccion::find($id);  
-      return view('admin.seccion.editseccion')->with(['seccion'=>$seccion]);
+        $this->myShare(Auth::id());
+        $seccion = Seccion::find($id);  
+        return view('admin.seccion.editseccion')->with(['seccion'=>$seccion]);
     }
 
     //funcion para guardar los nuevos datos del usuario en la vista editar 
     public function updateseccion(Request $request, $id)
     {
+        $this->myShare(Auth::id());
+
         $seccion = Seccion::find($id); //recibe los datos
         $datos = array();//array de datos
         
-          $datos['nombre']=$request->input('nombre'); //
-          $datos['descripcion']=$request->input('descripcion');                 
+        $datos['nombre']=$request->input('nombre'); //
+        $datos['descripcion']=$request->input('descripcion');                 
           
-          $seccion->update($datos); //envia a actualizar
+        $seccion->update($datos); //envia a actualizar
         return redirect()->route('admin.seccion.listasecciones');//redirige a la vista lista usuarios
     }
 
     public function listaclientes()
     {
+        $this->myShare(Auth::id());
         $clientes = Cliente::all();  //obtiene todos los usuarios de la base de datos
         return view('admin.cliente.listaclientes', ['clientes' => $clientes]);//
     }
@@ -149,11 +171,13 @@ class AdminController extends Controller
 
     public function createcliente()
     {
+        $this->myShare(Auth::id());
         return view('admin.cliente.createcliente');
     }
 
     public function storecliente(Request $request)
     {
+        
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
         $cliente = new Cliente;//llama al modelo usuario
         $cliente->identificacion = $request->input('identificacion'); 
@@ -169,8 +193,9 @@ class AdminController extends Controller
 
     public function editcliente($id)
     {
-      $cliente = Cliente::find($id);  
-      return view('admin.cliente.editcliente')->with(['cliente'=>$cliente]);
+        $this->myShare(Auth::id());
+        $cliente = Cliente::find($id);  
+        return view('admin.cliente.editcliente')->with(['cliente'=>$cliente]);
     }
 
     //funcion para guardar los nuevos datos del usuario en la vista editar 
@@ -191,25 +216,28 @@ class AdminController extends Controller
 
     public function listapersonas()
     {
+        $this->myShare(Auth::id());
         $personas = Persona::all();  //obtiene todos los usuarios de la base de datos
         return view('admin.persona.listapersonas', ['personas' => $personas]);//
     }
 
     public function deletepersona($id)
-    { 
-      $personas = Persona::find($id);  //captura el id del usuario
-      $personas->delete();//envia a eliminar dicho usuario
-      return redirect()->route('admin.persona.listapersonas');
+    {
+        $personas = Persona::find($id);  //captura el id del usuario
+        $personas->delete();//envia a eliminar dicho usuario
+        return redirect()->route('admin.persona.listapersonas');
     }
 
     public function createpersona()
     {
+        $this->myShare(Auth::id());
         $vartipousuario = TipoUsuario::all();  //captura el id del usuario
         return view('admin.persona.createpersona')->with('vartipousuario',$vartipousuario);
     }
 
     public function storepersona(Request $request)
     {
+        
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
         
         $user = new User;
@@ -234,9 +262,10 @@ class AdminController extends Controller
 
     public function editpersona($id)
     {
-      $persona = Persona::find($id); 
-      $vartipousuario = TipoUsuario::all(); 
-      return view('admin.persona.editpersona')->with(['persona'=>$persona])->with('vartipousuario',$vartipousuario);;
+        $this->myShare(Auth::id());
+        $persona = Persona::find($id); 
+        $vartipousuario = TipoUsuario::all(); 
+        return view('admin.persona.editpersona')->with(['persona'=>$persona])->with('vartipousuario',$vartipousuario);;
     }
 
     //funcion para guardar los nuevos datos del usuario en la vista editar 

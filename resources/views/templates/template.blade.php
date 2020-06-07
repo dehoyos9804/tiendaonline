@@ -28,6 +28,9 @@
         <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
 
+        <!--https://select2.org/-->
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
         @yield('head-style-script')
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -348,6 +351,13 @@
         <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.search-select').select2();
+            });
+        </script>
         @yield('boby-script')
     </body>
 </html>

@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Models\Persona;
-use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
+use App\Models\Compra;
+use App\Models\Persona;
+use App\Models\Proveedor;
+use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class CompraController extends Controller
 {
+    public function myShare($id){
+        $user = Persona::where('users_id', $id)->first();
+        \View::share('user_auth', $user);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +23,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
+        $proveedores = Proveedor::all();
+        $productos = Producto::all();
+
+        return view('admin.compras.index')
+            ->with(['proveedores'=>$proveedores, 'productos'=>$productos]);
     }
 
     /**
@@ -28,15 +40,7 @@ class UserController extends Controller
     {
         //
     }
-    public function myShare($id){
-        $user = Persona::where('users_id', $id)->first();
-        \View::share('user_auth', $user);
-    }
 
-    public function profile(){
-        $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
-        return view('usuarios.profile');
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -51,10 +55,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
     }
@@ -62,10 +66,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +78,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +89,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
     }

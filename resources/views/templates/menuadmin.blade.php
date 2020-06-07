@@ -38,7 +38,7 @@
             <i class="menu-icon icon-code"></i><span>Compras</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
-            <li><a class="menu-icon fa fa-plus-square" href="form-elements.html"> Nueva Compra</a></li>
+            <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.compra.index')}}"> Nueva Compra</a></li>
             <li><a class="menu-icon fa fa-table" href="form-wizard.html"> Lista Compras</a></li>
         </ul>
     </li>

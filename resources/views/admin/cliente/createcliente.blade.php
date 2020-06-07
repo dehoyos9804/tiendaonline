@@ -2,7 +2,11 @@
 @section('titulo', 'Admin | Tienda Online')
 
 @section('menu')
-  @include('templates.menuadmin')
+  @if($user_auth->tipousuario->nombre == 'ADMINISTRADOR')
+    @include('templates.menuadmin')
+  @elseif($user_auth->tipousuario->nombre == 'VENDEDOR')
+    @include('templates.menu')
+  @endif
 @endsection
 
 @section('head-style-script')

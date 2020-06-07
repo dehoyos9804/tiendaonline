@@ -3,10 +3,10 @@
 
 @section('menu')
 
-  @if(Config::get('auth_tipo_user') == 'ADMINISTRADOR')
+  @if($user_auth->tipousuario->nombre == 'ADMINISTRADOR')
+    @include('templates.menuadmin')
+  @elseif($user_auth->tipousuario->nombre == 'VENDEDOR')
     @include('templates.menu')
-  @elseif(Config::get('auth_tipo_user') == 'VENDEDOR')
-    TEST :V
   @endif
 
 @endsection

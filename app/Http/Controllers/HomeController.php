@@ -15,9 +15,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {   
-        
         $this->middleware('auth');
         
+        //$id = Auth::id();
+        //$user = Persona::where('users_id', $id)->first();
+        //\Config::set('auth_tipo_user', $id);
     }
 
     /**
@@ -27,11 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $user = Persona::where('users_id', $id)->first();
 
-        \Config::set('auth_tipo_user', $user->tipousuario->nombre);
         //return view('home');
+        $id =  Auth::id();
+        $user = Persona::where('users_id', $id)->first();
+        \View::share('user_auth', $user);
         return view('admin.index');
     }
 }
