@@ -9,7 +9,7 @@
     <!--Aqui los estilos y scripts en el head-->
 @endsection
 @section('contenido')
-<script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
+<!-- <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
 <script src='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js'></script>
 <script src='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.js'></script>
 <script src='{{url("ecaps")}}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js'></script>
@@ -19,7 +19,7 @@
         <script src='{{url("ecaps")}}/assets/js/pages/form-file-upload.js'></script>
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.css' rel="stylesheet">
-        <link href='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' rel="stylesheet" type="text/css"/>
+        <link href='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' rel="stylesheet" type="text/css"/> -->
        
         
 <div id="main-wrapper">
@@ -115,7 +115,7 @@
 @endsection
 @section('boby-script')
     <!--Aqui los scripts en el body-->
-    <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
+    <!-- <script src='{{url("ecaps")}}/assets/plugins/plupload/js/plupload.full.min.js'></script>
     <script src='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js'></script>
     <script src='{{url("ecaps")}}/assets/plugins/dropzone/dropzone.min.js'></script>
     <script src='{{url("ecaps")}}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js'></script>
@@ -130,5 +130,5 @@ $(function() {
 
 });
 
-</script> 
+</script>  -->
 @endsection
