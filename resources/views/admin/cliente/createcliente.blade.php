@@ -12,7 +12,7 @@
 
 <div id="main-wrapper">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="panel panel-white">
                 <div class="panel-heading clearfix">
                     <h4 class="panel-title">Registrar Cliente</h4>
@@ -20,23 +20,23 @@
                 <div class="panel-body">
                     <form method="POST" action="{{ route('admin.cliente.storecliente') }}">
                     {!! csrf_field() !!}
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Identificacion</label>
                         <input type="text" class="form-control" name="identificacion" placeholder="Identificacion">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Nombre</label>
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Apellido</label>
                         <input type="text" class="form-control" name="apellido" placeholder="Apellido">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Telefono</label>
                         <input type="text" class="form-control" name="telefono" placeholder="Telefono">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Direccion</label>
                         <input type="text" class="form-control" name="direccion" placeholder="Direccion">
                         </div>

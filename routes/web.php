@@ -75,6 +75,18 @@ $router->patch('admin/persona/{id}', ['as' =>'admin.persona.updatepersona','uses
 
 $router->get('admin/persona/{id}/deletepersona', ['as' =>'admin.persona.deletepersona','uses'=> 'AdminController@deletepersona',]);
 
+//Producto
+$router->get('admin/producto/listaproductos',['as' =>'admin.producto.listaproductos','uses'=>'AdminController@listaproductos',]);
+
+$router->get('admin/producto/createproducto',['as'=>'admin.producto.createproducto','uses'=>'AdminController@createproducto',]);
+
+$router->post('admin/producto/storeproducto',['as'=>'admin.producto.storeproducto', 'uses'=>'AdminController@storeproducto',]);
+
+$router->get('admin/producto/{id}/editproducto',['as' =>'admin.producto.editproducto','uses'=>'AdminController@editproducto',]);
+
+$router->patch('admin/producto/{id}', ['as' =>'admin.producto.updateproducto','uses'=>'AdminController@updateproducto',]);
+
+$router->get('admin/producto/{id}/deleteproducto', ['as' =>'admin.producto.deleteproducto','uses'=> 'AdminController@deleteproducto',]);
 
 
 Route::group(['middleware' => ['auth']], function(){
@@ -83,4 +95,7 @@ Route::group(['middleware' => ['auth']], function(){
      * esto hára que no se puedan acceder sin logearse
      */
     Route::get('auth/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
+
+    
+
 });

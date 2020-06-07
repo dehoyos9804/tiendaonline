@@ -7,6 +7,8 @@ use App\Models\Proveedor;
 use App\Models\Seccion;
 use App\Models\Cliente;
 use App\Models\User;
+use Image;
+use App\Models\Producto;
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
 
@@ -253,6 +255,73 @@ class AdminController extends Controller
 
         $persona->update($datos); //envia a actualizar
         return redirect()->route('admin.persona.listapersonas');//redirige a la vista lista usuarios
+    }
+
+    public function listaproductos()
+    {
+        $productos = Producto::all();  //obtiene todos los usuarios de la base de datos
+        return view('admin.producto.listaproductos', ['productos' => $productos]);//
+    }
+
+    public function deleteproducto($id)
+    { 
+      $producto = Producto::find($id);  //captura el id del usuario
+      $producto->delete();//envia a eliminar dicho usuario
+      return redirect()->route('admin.producto.listaproductos');
+    }
+
+    public function createproducto()
+    {
+        $varseccion = Seccion::all();  //captura el id del usuario
+        return view('admin.producto.createproducto')->with('varseccion',$varseccion);
+    }
+
+    public function storeproducto(Request $request)
+    {
+        $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
+        
+        if($request->hasFile('img')){
+            $datos['img']=$request->file('img')->store('uploads','public');
+        }
+        $producto = new Producto;//llama al modelo usuario
+        $producto->img = $datos['img'];
+        $producto->nombre = $request->input('nombre');
+        $producto->marca = $request->input('marca');
+        $producto->preciocompra = $request->input('preciocompra');
+        $producto->cantidad = $request->input('cantidad');
+        $producto->precioventa = $request->input('precioventa');
+        $producto->estado = $request->input('estado');
+        $producto->secciones_id = $request->input('secciones_id');
+        
+        //return response()->json($producto);
+        // return response()->json($datos['img']);
+        
+        $producto->save();//guarda los datos
+        return redirect()->route('admin.producto.listaproductos');//redirige a la vista lista    
+    }
+
+    public function editproducto($id)
+    {
+      $producto = Producto::find($id); 
+      $varseccion = Seccion::all(); 
+      return view('admin.producto.editproducto')->with(['producto'=>$producto])->with('varseccion',$varseccion);;
+    }
+
+    //funcion para guardar los nuevos datos del usuario en la vista editar 
+    public function updateproducto(Request $request, $id)
+    {
+        $producto = Producto::find($id);
+        $datos = array();//array de datos
+        $datos['nombre']=$request->input('nombre');                 //
+        $datos['marca']=$request->input('marca');             //captura los 
+        $datos['preciocompra']=$request->input('preciocompra');             //datos que esten
+        $datos['cantidad']=$request->input('cantidad'); 
+        $datos['precioventa']=$request->input('precioventa');
+        $datos['estado']=$request->input('estado');          //en el formulario
+        $datos['secciones_id']=$request->input('secciones_id');
+        
+        $producto->update($datos); //envia a actualizar
+        return redirect()->route('admin.producto.listaproductos');//redirige a la vista lista usuarios
     }
 
     /**

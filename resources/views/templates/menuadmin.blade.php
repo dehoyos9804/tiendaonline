@@ -25,6 +25,17 @@
     </li>
     <li>
         <a href="javascript:void(0)">
+            <i class="menu-icon fa fa-cart-arrow-down"></i><span>Productos</span><i class="accordion-icon fa fa-angle-left"></i>
+        </a>
+        <ul class="sub-menu">
+            <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.producto.createproducto') }}"> Registrar Producto</a></li>
+            <li><a class="menu-icon fa fa-table" href="{{ route('admin.producto.listaproductos') }}"> Lista de Productos</a></li>
+            
+        </ul>
+    </li>
+    
+    <li>
+        <a href="javascript:void(0)">
             <i class="menu-icon fa fa-users"></i><span>Clientes</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
