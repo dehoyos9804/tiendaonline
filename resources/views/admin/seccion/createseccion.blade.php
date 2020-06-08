@@ -10,7 +10,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
         <div class="col-md-12">
             <div class="panel panel-white">
                 <div class="panel-heading clearfix">

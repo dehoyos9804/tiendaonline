@@ -12,7 +12,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">
@@ -41,10 +41,14 @@
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Tipo de Usuario</label>
-                        <select class="form-control select" name="tipousuario_id" id="tipousuario_id" data-live-search="true">
-                            <option value="0" selected>seleccione</option>
+                        <select class="form-control" name="tipousuario" id="tipousuario" data-live-search="true">
+                            <!-- <option value="0">Seleccione</option> -->
                             @foreach($vartipousuario as $tipos)
-                                <option value="{{$tipos->id}}">{{$tipos->nombre}}</option>
+                                @if ($persona->tipousuario_id==$tipos->id)
+                                    <option value="{{$tipos->id}}" selected>{{$tipos->nombre}}</option>
+                                @else
+                                    <option value="{{$tipos->id}}">{{$tipos->nombre}}</option>
+                                @endif
                             @endforeach
                         </select>
                         </div>

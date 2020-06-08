@@ -22,7 +22,7 @@
         <link href='{{url("ecaps")}}/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' rel="stylesheet" type="text/css"/> -->
        
         
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 100%;margin-left: auto;margin-right: auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">

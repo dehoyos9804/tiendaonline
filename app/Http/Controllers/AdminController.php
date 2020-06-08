@@ -265,7 +265,7 @@ class AdminController extends Controller
         $datos['apellido']=$request->input('apellido');             //captura los 
         $datos['telefono']=$request->input('telefono');             //datos que esten
         $datos['direccion']=$request->input('direccion');           //en el formulario
-        $datos['tipousuario_id']=$request->input('tipousuario_id');
+        $datos['tipousuario_id']=$request->input('tipousuario');
         $datos['user_id']=$request->input('user_id');
 
         $persona->update($datos); //envia a actualizar
