@@ -25,6 +25,7 @@
 
         <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">
         <link href="assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>  
+
         <!-- Theme Styles -->
         <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
@@ -165,8 +166,7 @@
                     </div>
                     <div id="main-wrapper">
                         @yield('contenido')
-                    </div><!-- Main Wrapper -->
-                    
+                    </div><!-- Main Wrapper -->                    
     
                     <div class="page-footer">
                         <p>Made with <i class="fa fa-heart"></i> by skcats</p>
@@ -355,7 +355,6 @@
         <script src="assets/plugins/summernote-master/summernote.min.js"></script>
         
         <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
 

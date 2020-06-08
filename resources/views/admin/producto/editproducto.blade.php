@@ -16,7 +16,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">
@@ -37,34 +37,45 @@
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Compra</label>
-                        <input type="text" value="{{($producto->preciocompra)}}" class="form-control" name="preciocompra">
+                        <input type="number" value="{{($producto->preciocompra)}}" class="form-control" name="preciocompra">
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Venta</label>
-                        <input type="text" value="{{($producto->precioventa)}}" class="form-control" name="precioventa">
+                        <input type="number" value="{{($producto->precioventa)}}" class="form-control" name="precioventa">
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Cantidad</label>
-                        <input type="text" value="{{($producto->cantidad)}}" class="form-control" name="cantidad">
+                        <input type="number" value="{{($producto->cantidad)}}" class="form-control" name="cantidad">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Estado</label>
-                            <select style="margin-bottom:15px;" value="{{$producto->estado}}" name="estado" class="form-control" require>
-                                <option>seleccione</option>
-                                <option>ACTIVO</option>
-                                <option>INACTIVO</option>
+                            <select style="margin-bottom:15px;" name="estado" class="form-control" require>
+                                @if($producto->estado=='ACTIVO')
+                                    <option value="ACTIVO" selected>ACTIVO</option>
+                                    <option value="INACTIVO">INACTIVO</option>
+                                @endif
+                                @if($producto->estado=='INACTIVO')
+                                    <option value="ACTIVO">ACTIVO</option>
+                                    <option value="INACTIVO" selected>INACTIVO</option>
+                                @endif
                             </select>
                         </div>                
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Seccion</label>
                         <select class="form-control select" name="secciones_id" id="secciones_id" data-live-search="true" require>
-                            <option value="0" selected>seleccione</option>
-                            @foreach($varseccion as $seccion)
-                                <option value="{{$seccion->id}}">{{$seccion->nombre}}</option>
+                        @foreach($varseccion as $seccion)
+                                @if ($producto->secciones_id==$seccion->id)
+                                    <option value="{{$seccion->id}}" selected>{{$seccion->nombre}}</option>
+                                @else
+                                    <option value="{{$seccion->id}}">{{$seccion->nombre}}</option>
+                                @endif
                             @endforeach
                         </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.producto.listaproductos') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>
             </div>

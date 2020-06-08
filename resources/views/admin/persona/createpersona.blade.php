@@ -14,7 +14,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">
@@ -57,8 +57,10 @@
                             @endforeach
                         </select>
                         </div>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.persona.listapersonas') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
             </div>

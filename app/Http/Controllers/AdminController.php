@@ -16,6 +16,7 @@ use App\Models\Venta;
 use App\Models\Compra;
 
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -249,11 +250,11 @@ class AdminController extends Controller
     {
         
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
-        
+        //$hashpassword = Hash::make($request->input('password'));
         $user = new User;
         $user->name = $request->input('nombre');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password')); //$hashpassword;
         $user->save();
 
         $coduser= User::all()->last();//recibe los datos que se acaban de crear y crea una nueva cuenta para ese usuario
@@ -287,7 +288,7 @@ class AdminController extends Controller
         $datos['apellido']=$request->input('apellido');             //captura los 
         $datos['telefono']=$request->input('telefono');             //datos que esten
         $datos['direccion']=$request->input('direccion');           //en el formulario
-        $datos['tipousuario_id']=$request->input('tipousuario_id');
+        $datos['tipousuario_id']=$request->input('tipousuario');
         $datos['user_id']=$request->input('user_id');
 
         $persona->update($datos); //envia a actualizar

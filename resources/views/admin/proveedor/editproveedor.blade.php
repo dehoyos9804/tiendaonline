@@ -16,7 +16,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">
@@ -43,7 +43,10 @@
                         <label for="exampleInputEmail1">Direccion</label>
                         <input type="text" value="{{($proveedor->direccion)}}" class="form-control" name="direccion" placeholder="Direccion">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.proveedor.listaproveedores') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>
             </div>
