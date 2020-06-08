@@ -9,6 +9,11 @@ use App\Models\Proveedor;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
+use DB;
+
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
+
 class CompraController extends Controller
 {
     public function myShare($id){
@@ -38,7 +43,11 @@ class CompraController extends Controller
      */
     public function create()
     {
-        //
+        $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
+        
+        $compras = Compra::orderBy('created_at','DESC')->get();
+
+        return view('admin.compras.lista')->with(['compras'=>$compras]);
     }
 
     /**
@@ -68,6 +77,36 @@ class CompraController extends Controller
 
             return redirect()->route('admin.compra.index',['isGuardado'=>'1']);
         }
+    }
+
+    public function report($id)
+    {
+        $datos = Compra::where('id', $id)->first();
+        $detalle = DB::select("SELECT 
+        p.nombre, p.marca, p.precioventa, cp.cantidad, cp.total
+        FROM compra_producto cp
+        INNER JOIN productos p ON p.id = cp.producto_id
+        INNER JOIN compras c ON c.id = cp.compra_id
+        WHERE c.id = ?", array($id));
+
+        //return view('report', with(['factura'=>$factura, 'datos'=>$datos, 'detalle'=>$detalle]));
+        return view('reportes.reportecompra', compact('datos'), compact('detalle'));
+    }
+
+    public function imprimir($id){
+        //$today = Carbon::now()->format('d/m/Y');
+        $datos = Compra::where('id', $id)->first();//obtengo las compras
+
+        //obtengo todas el detalle de la compra
+        $detalle = DB::select("SELECT 
+        p.nombre, p.marca, p.precioventa, cp.cantidad, cp.total
+        FROM compra_producto cp
+        INNER JOIN productos p ON p.id = cp.producto_id
+        INNER JOIN compras c ON c.id = cp.compra_id
+        WHERE c.id = ?", array($id));
+
+        $pdf = \PDF::loadView('reportes.reportecompra', compact('datos'), compact('detalle'));
+        return $pdf->download('report.pdf');
     }
 
     /**

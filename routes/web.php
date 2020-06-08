@@ -75,13 +75,17 @@ Route::group(['middleware' => ['auth']], function(){
     //Compras
     Route::get('admin/compras/registrar/{isGuardado}',['as' =>'admin.compra.index','uses'=>'CompraController@index',]);
     Route::post('admin/compras/store', ['as'=>'admin.compra.store', 'uses'=>'CompraController@store',]);
+    Route::get('admin/compras/lista/',['as' =>'admin.compra.lista','uses'=>'CompraController@create',]);
 
     //Ventas
     Route::get('admin/ventas/registrar/{isGuardado}',['as' =>'venta.index','uses'=>'VentaController@index',]);
     Route::post('admin/ventas/store', ['as'=>'venta.store', 'uses'=>'VentaController@store',]);
+    Route::get('admin/ventas/lista/',['as' =>'venta.lista','uses'=>'VentaController@create',]);
 
     //Reportes
-    Route::get('report',['as' =>'report','uses'=>'AdminController@report',]);
-    Route::name('imprimir')->get('/imprimir', 'AdminController@imprimir');
+    Route::get('report/venta/{id}',['as' =>'report','uses'=>'VentaController@report',]);
+    Route::get('imprimir/venta/{id}',['as' =>'reporte.download','uses'=>'VentaController@imprimir',]);
+    Route::get('report/compra/{id}',['as' =>'reporte.compra','uses'=>'CompraController@report',]);
+    Route::get('imprimir/compra/{id}',['as' =>'reporte.compra.download','uses'=>'CompraController@imprimir',]);
 
 });

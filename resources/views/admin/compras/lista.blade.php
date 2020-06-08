@@ -16,38 +16,37 @@
 
 <div class="page-inner">
     <div class="page-title">
-        <h3 class="breadcrumb-header">Secciones</h3>
+        <h3 class="breadcrumb-header">Compras</h3>
     </div>
 <div id="main-wrapper">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-white">
                 <div class="panel-heading clearfix">
-                    <h4 class="breadcrumb-header col-md-10">Lista Secciones</h4>
-                    <a href="{{ route('admin.seccion.createseccion') }}" class="btn btn-sm btn-default btn-addon col-md-2"><i class="glyphicon glyphicon-plus"></i>Nueva Seccion</a>
+                    <h4 class="breadcrumb-header col-md-10">Lista de Compras Generales</h4>
                 </div>
-                
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Descripcion</th>
+                                    <th>Fecha</th>
+                                    <th>total</th>
+                                    <th>Proveedor</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($secciones as $seccion)
+                                @foreach($compras as $key)
                                     <tr>
-                                        <td>{{ $seccion->id }}</td>
-                                        <td>{{ $seccion->nombre }}</td>
-                                        <td>{{ $seccion->descripcion }}</td>
+                                        <td>{{ $key->id }}</td>
+                                        <td>{{ $key->fecha }}</td>
+                                        <td>{{ $key->total }}</td>
+                                        <td>{{ $key->proveedor->nit }} - {{ $key->proveedor->razonsocial }}</td>
                                         <td class="text-center">
-                                        <a href="{{route('admin.seccion.editseccion',['id' => $seccion->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
-                                        <a href="{{route('admin.seccion.deleteseccion', ['id' => $seccion->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
-                                    
+                                            <a href="{{ route('reporte.compra.download',['id'=>$key->id])}}" class="btn btn-danger btn-sm fa fa-file-pdf-o"></a>
+                                            <a href="{{ route('reporte.compra',['id'=>$key->id])}}" class="btn btn-info btn-sm fa fa-eye"></a>
                                         </td>
                                     </tr>
                                 @endforeach

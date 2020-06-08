@@ -1,6 +1,6 @@
 <ul class="accordion-menu">
     <li class="active-page">
-        <a href="admin.index">
+        <a href="{{route('admin.index')}}">
             <i class="menu-icon icon-home4"></i><span>Inicio</span>
         </a>
     </li>
@@ -25,7 +25,7 @@
     </li>
     <li>
         <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-cart-arrow-down"></i><span>Productos</span><i class="accordion-icon fa fa-angle-left"></i>
+            <i class="menu-icon fa fa-pie-chart"></i><span>Productos</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
             <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.producto.createproducto') }}"> Registrar Producto</a></li>
@@ -46,20 +46,20 @@
     </li>
     <li>
         <a href="javascript:void(0)">
-            <i class="menu-icon icon-code"></i><span>Compras</span><i class="accordion-icon fa fa-angle-left"></i>
+            <i class="menu-icon fa fa-shopping-cart"></i><span>Compras</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
             <li><a class="menu-icon fa fa-plus-square" href="{{ route('admin.compra.index', ['isGuardado'=>'0'])}}"> Nueva Compra</a></li>
-            <li><a class="menu-icon fa fa-table" href="form-wizard.html"> Lista Compras</a></li>
+            <li><a class="menu-icon fa fa-table" href="{{route('admin.compra.lista')}}"> Lista Compras</a></li>
         </ul>
     </li>
     <li>
         <a href="javascript:void(0)">
-            <i class="menu-icon icon-code"></i><span>Ventas</span><i class="accordion-icon fa fa-angle-left"></i>
+            <i class="menu-icon fa fa-shopping-basket"></i><span>Ventas</span><i class="accordion-icon fa fa-angle-left"></i>
         </a>
         <ul class="sub-menu">
             <li><a class="menu-icon fa fa-plus-square" href="{{ route('venta.index', ['isGuardado'=>'0'])}}"> Nueva Venta</a></li>
-            <li><a class="menu-icon fa fa-table" href="form-wizard.html"> Lista Compras</a></li>
+            <li><a class="menu-icon fa fa-table" href="{{ route('venta.lista') }}"> Lista Ventas</a></li>
         </ul>
     </li>
     

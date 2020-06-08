@@ -12,6 +12,8 @@ use App\Models\Producto;
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Venta;
+use App\Models\Compra;
 
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
@@ -49,16 +51,6 @@ class AdminController extends Controller
         \View::share('user_auth', $user);
     }
 
-    public function report()
-    {
-        return view('report');
-    }
-
-    public function imprimir(){
-        $today = Carbon::now()->format('d/m/Y');
-        $pdf = \PDF::loadView('report');
-        return $pdf->download('report.pdf');
-    }
 
     
 

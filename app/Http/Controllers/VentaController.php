@@ -10,6 +10,10 @@ use App\Models\Cliente;
 use App\Models\Proveedor;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
+use DB;
+
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 
 class VentaController extends Controller
 {
@@ -42,7 +46,10 @@ class VentaController extends Controller
      */
     public function create()
     {
-        //
+        $this->myShare(Auth::id());//guardo el objeto de usuario en memoria
+        $ventas = Venta::orderBy('created_at','DESC')->get();
+
+        return view('ventas.lista')->with(['ventas'=>$ventas]);
     }
 
     /**
@@ -72,6 +79,32 @@ class VentaController extends Controller
 
             return redirect()->route('venta.index',['isGuardado'=>'1']);
         }
+    }
+
+    public function report($id)
+    {
+        $datos = Venta::where('id', $id)->first();
+        $detalle = DB::select("SELECT p.nombre, p.marca, p.precioventa, pv.cantidad, pv.total
+                    FROM producto_venta pv
+                    INNER JOIN productos p ON p.id = pv.producto_id
+                    INNER JOIN ventas v ON v.id = pv.venta_id
+                    WHERE v.id = ?", array($id));
+
+        //return view('report', with(['factura'=>$factura, 'datos'=>$datos, 'detalle'=>$detalle]));
+        return view('reportes.reporteventa', compact('datos'), compact('detalle'));
+    }
+
+    public function imprimir($id){
+        //$today = Carbon::now()->format('d/m/Y');
+        $datos = Venta::where('id', $id)->first();
+        $detalle = DB::select("SELECT p.nombre, p.marca, p.precioventa, pv.cantidad, pv.total
+                    FROM producto_venta pv
+                    INNER JOIN productos p ON p.id = pv.producto_id
+                    INNER JOIN ventas v ON v.id = pv.venta_id
+                    WHERE v.id = ?", array($id));
+
+        $pdf = \PDF::loadView('reportes.reporteventa', compact('datos'), compact('detalle'));
+        return $pdf->download('report.pdf');
     }
 
     /**

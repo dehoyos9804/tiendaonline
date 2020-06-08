@@ -28,33 +28,33 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                    <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>NIT</th>
-                                <th>Razon Social</th>
-                                <th>Telefono</th>
-                                <th>Direccion</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        @foreach($proveedores as $proveedor)
-                        <tbody>
-                            <tr>
-                                <td>{{ $proveedor->id }}</td>
-                                <td>{{ $proveedor->nit }}</td>
-                                <td>{{ $proveedor->razonsocial }}</td>
-                                <td>{{ $proveedor->telefono }}</td>
-                                <td>{{ $proveedor->direccion }}</td>
-                                <td class="text-center">
-                                <a href="{{route('admin.proveedor.editproveedor',['id' => $proveedor->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
-                                <a href="{{route('admin.proveedor.deleteproveedor', ['id' => $proveedor->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
-                            
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
+                        <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>NIT</th>
+                                    <th>Razon Social</th>
+                                    <th>Telefono</th>
+                                    <th>Direccion</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($proveedores as $proveedor)
+                                    <tr>
+                                        <td>{{ $proveedor->id }}</td>
+                                        <td>{{ $proveedor->nit }}</td>
+                                        <td>{{ $proveedor->razonsocial }}</td>
+                                        <td>{{ $proveedor->telefono }}</td>
+                                        <td>{{ $proveedor->direccion }}</td>
+                                        <td class="text-center">
+                                        <a href="{{route('admin.proveedor.editproveedor',['id' => $proveedor->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
+                                        <a href="{{route('admin.proveedor.deleteproveedor', ['id' => $proveedor->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
+                                    
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>  
                     </div>
                 </div>

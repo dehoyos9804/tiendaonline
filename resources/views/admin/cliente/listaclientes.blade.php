@@ -28,33 +28,33 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                    <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Identificacion</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Direccion</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        @foreach($clientes as $cliente)
-                        <tbody>
-                            <tr>
-                                <td>{{ $cliente->id }}</td>
-                                <td>{{ $cliente->identificacion }}</td>
-                                <td>{{ $cliente->nombre }} {{ $cliente->apellido }}</td>
-                                <td>{{ $cliente->telefono }}</td>
-                                <td>{{ $cliente->direccion }}</td>
-                                <td class="text-center">
-                                <a href="{{route('admin.cliente.editcliente',['id' => $cliente->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
-                                <a href="{{route('admin.cliente.deletecliente', ['id' => $cliente->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
-                            
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
+                        <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Identificacion</th>
+                                    <th>Nombre</th>
+                                    <th>Telefono</th>
+                                    <th>Direccion</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($clientes as $cliente)
+                                    <tr>
+                                        <td>{{ $cliente->id }}</td>
+                                        <td>{{ $cliente->identificacion }}</td>
+                                        <td>{{ $cliente->nombre }} {{ $cliente->apellido }}</td>
+                                        <td>{{ $cliente->telefono }}</td>
+                                        <td>{{ $cliente->direccion }}</td>
+                                        <td class="text-center">
+                                        <a href="{{route('admin.cliente.editcliente',['id' => $cliente->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
+                                        <a href="{{route('admin.cliente.deletecliente', ['id' => $cliente->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
+                                    
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>  
                     </div>
                 </div>

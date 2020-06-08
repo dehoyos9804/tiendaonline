@@ -34,6 +34,9 @@
         <!--https://select2.org/-->
 	    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
 
+        <link type="text/css" rel="stylesheet" href='{{url("ecaps")}}/assets/plugins/light-gallery/dist/css/lightgallery.css' /> 
+        
+
         @yield('head-style-script')
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -357,14 +360,30 @@
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('.search-select').select2();
-            });
-        </script>
 
         <!--https://sweetalert.js.org/guides/-->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script src='{{url("ecaps")}}/assets/plugins/light-gallery/dist/js/lightgallery.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <!-- lightgallery plugins -->
+        <script src='{{url("ecaps")}}/assets/plugins/light-gallery/dist/js/lg-thumbnail.min.js'></script>
+        <script src='{{url("ecaps")}}/assets/plugins/light-gallery/dist/js/lg-fullscreen.min.js'></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.search-select').select2();
+                $(".lightgallery").lightGallery({
+                    thumbnail: false,
+                    mode: 'lg-fade',
+                    cssEasing:'ease',
+                    useLeft:true,
+                    closable:true,
+                    keyPress:true
+                }); 
+            });
+        </script>
+        
 
         @yield('boby-script')
     </body>
