@@ -140,7 +140,7 @@
                                             <td class="text-center"></td>
                                             <td class="text-center"></td>
                                             <td class="text-center"><b>Total:</b></td>
-                                            <td class="text-center">$<input type="number" name="total" id="total" class="btn btn-sm" value='0.0'></td>
+                                            <td class="text-center">$<input type="text" name="total" id="total" class="btn btn-sm" value='0.0'></td>
                                             <td class="text-center"></td>
                                         </tfoot>
                                     </table>
@@ -208,6 +208,7 @@
             //calculo el subtotal del producto
             producto_cantidad = $('#cantidad').val();
             if(producto_cantidad > 0){
+                producto_precio_compra = $('#preciocompra').val();
                 array_subtotal[contador] = (producto_cantidad*producto_precio_compra);
                 total += array_subtotal[contador];
 
