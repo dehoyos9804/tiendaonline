@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="email">{{ __('E-Mail Address') }}</label>
+                            <label for="email">{{ __('Correo Electronico') }}</label>
                             <input  id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password">{{ __('Password') }}</label>
+                            <label for="password">{{ __('Contraseña') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                             <label class="form-check-label" for="remember">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ __('Remember Me') }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ __('Recuérdame') }}
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary">
@@ -47,7 +47,7 @@
                         @endif
                         @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('¿Olvidaste tú contraseña?') }}
                             </a>
                         @endif
                     </form>

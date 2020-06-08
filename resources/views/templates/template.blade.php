@@ -139,7 +139,7 @@
                                     <li class="dropdown user-dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src='{{url("ecaps")}}/assets/images/logoprincipal.png' alt="profile username" class="img-circle"></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                                            <!--<li><a href="{{ route('user.profile') }}">Profile</a></li>-->
                                             <li><a href="#">Calendar</a></li>
                                             <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a></li>
                                             <li role="separator" class="divider"></li>
