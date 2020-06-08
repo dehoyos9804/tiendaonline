@@ -22,7 +22,6 @@
         <link href='{{url("ecaps")}}/assets/plugins/icomoon/style.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/plugins/uniform/css/default.css' rel="stylesheet"/>
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
-        <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">  
         <!-- Theme Styles -->
         <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
@@ -157,7 +156,6 @@
                         @yield('contenido')
                     </div><!-- Main Wrapper -->
 
-                    <script src='{{url("ecaps")}}assets/js/ecaps.min.js'></script>
                     <link href='{{url("ecaps")}}/assets/plugins/datatables/css/jquery.datatables.min.css' rel="stylesheet" type="text/css"/>	
                     <script src='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.js'></script>
                     
@@ -346,7 +344,6 @@
         <script src='{{url("ecaps")}}/assets/plugins/flot/jquery.flot.pie.min.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/chartjs/chart.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/ecaps.min.js'></script>
-        <script src='{{url("ecaps")}}/assets/js/pages/dashboard.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/datatables/js/jquery.datatables.min.js'></script>
         <script src='{{url("ecaps")}}/assets/js/pages/table-data.js'></script>
         

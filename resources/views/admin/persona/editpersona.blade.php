@@ -52,7 +52,10 @@
                             @endforeach
                         </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.persona.listapersonas') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>
             </div>

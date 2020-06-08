@@ -25,7 +25,7 @@
                     {!! csrf_field() !!}
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Identificacion</label>
-                        <input type="text" value="{{($cliente->identificacion)}}" class="form-control" name="identificacion">
+                        <input type="number" value="{{($cliente->identificacion)}}" class="form-control" name="identificacion">
                         </div>
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Nombre</label>
@@ -43,7 +43,10 @@
                         <label for="exampleInputEmail1">Direccion</label>
                         <input type="text" value="{{($cliente->direccion)}}" class="form-control" name="direccion">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.cliente.listaclientes') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>
             </div>

@@ -33,15 +33,15 @@
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Compra</label>
-                        <input type="text" value="{{($producto->preciocompra)}}" class="form-control" name="preciocompra">
+                        <input type="number" value="{{($producto->preciocompra)}}" class="form-control" name="preciocompra">
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Venta</label>
-                        <input type="text" value="{{($producto->precioventa)}}" class="form-control" name="precioventa">
+                        <input type="number" value="{{($producto->precioventa)}}" class="form-control" name="precioventa">
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Cantidad</label>
-                        <input type="text" value="{{($producto->cantidad)}}" class="form-control" name="cantidad">
+                        <input type="number" value="{{($producto->cantidad)}}" class="form-control" name="cantidad">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Estado</label>
@@ -68,7 +68,10 @@
                             @endforeach
                         </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8"></div>
+                        <a href="{{ route('admin.producto.listaproductos') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>
             </div>

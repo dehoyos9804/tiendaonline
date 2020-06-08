@@ -10,7 +10,7 @@
 @endsection
 @section('contenido')
 
-<div id="main-wrapper" style="width: 75%;margin-left: auto;margin-right: auto;">
+<div id="main-wrapper" style="width: 100%;margin-left: auto;margin-right: auto;">
         <div class="col-md-12">
             <div class="panel panel-white">
                 <div class="panel-heading clearfix">
@@ -19,18 +19,20 @@
                 <div class="panel-body">
                     <form class="form" method="POST" action="{{ route('admin.seccion.storeseccion') }}">
                     {!! csrf_field() !!}
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-3">
                         <label for="exampleInputEmail1">Nombre</label>
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                         </div>
-                        <div class="form-group col-md-8">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Descripcion</label>
-                        <input type="textarea" class="form-control" name="descripcion" placeholder="Descripcion">
+                        <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
                         </div>
                         
-                        <div class="form-group col-md-2">
-                        <label for="exampleInputEmail1" style="visibility: hidden">boton</label>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1" style="visibility: hidden">boton</label><br>
+                        <a href="{{ route('admin.seccion.listasecciones') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        
                         </div>
                     </form>
                 </div>

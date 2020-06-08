@@ -74,15 +74,15 @@
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Compra</label>
-                        <input type="text" class="form-control" name="preciocompra" placeholder="Precio Compra" require>
+                        <input type="number" class="form-control" name="preciocompra" placeholder="Precio Compra" require>
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Precio Venta</label>
-                        <input type="text" class="form-control" name="precioventa" placeholder="Precio Venta" require>
+                        <input type="number" class="form-control" name="precioventa" placeholder="Precio Venta" require>
                         </div>
                         <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Cantidad</label>
-                        <input type="text" class="form-control" name="cantidad" placeholder="Cantidad" require>
+                        <input type="number" class="form-control" name="cantidad" placeholder="Cantidad" require>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Estado</label>
@@ -102,9 +102,10 @@
                         </select>
                         </div>
                             <div class="col-md-8"></div>
-                                <button class="btn btn-primary" type="submit" id="btn-guardar">Guardar</button>
-                                <a href="{{ route('admin.producto.listaproductos') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+                            <a href="{{ route('admin.producto.listaproductos') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
                         
+                                <button class="btn btn-primary" type="submit" id="btn-guardar">Guardar</button>
+                                
                     </div>
                     </form>
                 </div>

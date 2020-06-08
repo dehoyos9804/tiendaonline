@@ -12,6 +12,7 @@ use App\Models\Producto;
 use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -228,11 +229,11 @@ class AdminController extends Controller
     public function storepersona(Request $request)
     {
         $datos=$request->all();//recibe los datos que diligencias en la vista crear usuarios
-        
+        //$hashpassword = Hash::make($request->input('password'));
         $user = new User;
         $user->name = $request->input('nombre');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password')); //$hashpassword;
         $user->save();
 
         $coduser= User::all()->last();//recibe los datos que se acaban de crear y crea una nueva cuenta para ese usuario
