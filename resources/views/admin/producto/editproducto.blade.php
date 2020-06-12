@@ -35,17 +35,13 @@
                         <label for="exampleInputEmail1">Marca</label>
                         <input type="text" value="{{($producto->marca)}}" class="form-control" name="marca">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Precio Compra</label>
                         <input type="number" value="{{($producto->preciocompra)}}" class="form-control" name="preciocompra">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Precio Venta</label>
                         <input type="number" value="{{($producto->precioventa)}}" class="form-control" name="precioventa">
-                        </div>
-                        <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Cantidad</label>
-                        <input type="number" value="{{($producto->cantidad)}}" class="form-control" name="cantidad">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Estado</label>
@@ -62,13 +58,13 @@
                         </div>                
                         <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Seccion</label>
-                        <select class="form-control select" name="secciones_id" id="secciones_id" data-live-search="true" require>
+                        <select class="form-control select" name="seccion_" id="seccion_" data-live-search="true" require>
                         @foreach($varseccion as $seccion)
-                                @if ($producto->secciones_id==$seccion->id)
+                                @if ($seccion->id==$producto->seccion_id)
                                     <option value="{{$seccion->id}}" selected>{{$seccion->nombre}}</option>
                                 @else
                                     <option value="{{$seccion->id}}">{{$seccion->nombre}}</option>
-                                @endif
+                                @endif 
                             @endforeach
                         </select>
                         </div>

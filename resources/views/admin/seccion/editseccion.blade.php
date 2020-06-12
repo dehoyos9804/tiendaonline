@@ -38,7 +38,6 @@
                         <div class="form-group col-md-3">
                         <label for="exampleInputEmail1" style="visibility: hidden">boton</label><br>
                         <a href="{{ route('admin.seccion.listasecciones') }}" class="btn btn-default" id="btn-cancelar">Cancelar</a>
-                        
                         <button type="submit" class="btn btn-primary">Editar</button>
                         </div>
                     </form>

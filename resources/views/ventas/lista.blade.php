@@ -45,7 +45,7 @@
                                         <td>{{ $key->id }}</td>
                                         <td>{{ $key->fecha }}</td>
                                         <td>{{ $key->total }}</td>
-                                        <td>{{ $key->clientes->nombre }}</td>
+                                        <td>{{ $key->clientes->nombre }} {{ $key->clientes->apellido }}</td>
                                         <td>{{ $key->users->persona->nombre }} {{ $key->users->persona->apellido }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('reporte.download',['id'=>$key->id])}}" class="btn btn-danger btn-sm fa fa-file-pdf-o"></a>

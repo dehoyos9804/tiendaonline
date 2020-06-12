@@ -61,8 +61,8 @@
                                         <td>{{ $producto->cantidad }}</td>
                                         <td>{{ $producto->estado }}</td>
                                         <td class="text-center">
-                                        <a href="{{route('admin.producto.editproducto',['id' => $producto->id])}}" class="btn btn-default btn-sm fa fa-edit">Edit</a>
-                                        <a href="{{route('admin.producto.deleteproducto', ['id' => $producto->id])}}" class="btn btn-danger btn-sm fa fa-trash-o">Delete</a>
+                                        <a href="{{route('admin.producto.editproducto',['id' => $producto->id])}}" class="btn btn-default btn-sm fa fa-edit"></a>
+                                        <a href="{{route('admin.producto.deleteproducto', ['id' => $producto->id])}}" class="btn btn-danger btn-sm fa fa-trash-o"></a>
                                         </td>
                                     </tr>
                                 @endforeach

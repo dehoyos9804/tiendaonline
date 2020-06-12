@@ -32,6 +32,7 @@ class HomeController extends Controller
 
         //return view('home');
         $id =  Auth::id();
+        echo $id;
         $user = Persona::where('user_id', $id)->first();
         \View::share('user_auth', $user);
 

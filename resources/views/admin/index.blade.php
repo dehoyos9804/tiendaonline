@@ -19,7 +19,7 @@
     @if($user_auth->tipousuario->nombre == 'ADMINISTRADOR')
         <div class="row">
 
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-white">
                         <div class="widget-summary">
@@ -36,14 +36,14 @@
                                     </div>
                                 </div>
                                 <div class="summary-footer">
-                                    <a class="text-uppercase" href="{{route('admin.persona.listapersonas')}}">(Ver Todos)</a>
+                                    <a class="text-uppercase" href="{{route('admin.persona.listapersonas')}}">(Ver Todo)</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-secondary">
                         <div class="widget-summary">
@@ -67,12 +67,12 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-tertiary">
                         <div class="widget-summary">
                             <div class="widget-summary-col widget-summary-col-icon">
-                                <div class="summary-icon">
+                                <div class="summary-icon"">
                                     <i class="fa fa-money"></i>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                 </section>
             </div>
 
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-tertiary">
                         <div class="widget-summary">
@@ -116,7 +116,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-tertiary">
                         <div class="widget-summary">
@@ -141,7 +141,7 @@
                 </section>
             </div>
 
-            <div class="col-md-4 col-xl-12">
+            <div class="col-md-2 col-xl-12">
                 <section class="panel">
                     <div class="panel-body bg-tertiary">
                         <div class="widget-summary">
@@ -244,6 +244,7 @@
             </div>
         </div>
     @endif
+    
     </div>
 
 @endsection

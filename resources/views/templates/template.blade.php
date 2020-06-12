@@ -24,8 +24,10 @@
         <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
 
         <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">
-        <link href="assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>  
-
+        <link href='{{url("ecaps")}}/assets/plugins/summernote-master/summernote.css' rel="stylesheet" type="text/css"/>  
+        <link href='{{url("ecaps")}}/assets/plugins/switchery/switchery.min.css' rel="stylesheet"/>
+        <link href='{{url("ecaps")}}/assets/plugins/nvd3/nv.d3.min.css' rel="stylesheet">  
+      
         <!-- Theme Styles -->
         <link href='{{url("ecaps")}}/assets/css/ecaps.css' rel="stylesheet">
         <link href='{{url("ecaps")}}/assets/css/custom.css' rel="stylesheet">
@@ -368,7 +370,9 @@
         <!-- lightgallery plugins -->
         <script src='{{url("ecaps")}}/assets/plugins/light-gallery/dist/js/lg-thumbnail.min.js'></script>
         <script src='{{url("ecaps")}}/assets/plugins/light-gallery/dist/js/lg-fullscreen.min.js'></script>
-
+        <script src='{{url("ecaps")}}/assets/js/pages/chart.js'></script>
+        <script src='{{url("ecaps")}}/assets/plugins/chartjs/chart.min.js'></script>
+        
         <script>
             $(document).ready(function(){
                 $('.search-select').select2();

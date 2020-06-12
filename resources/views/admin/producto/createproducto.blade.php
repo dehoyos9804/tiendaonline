@@ -64,18 +64,15 @@
                         <label for="exampleInputEmail1">Marca</label>
                         <input type="text" class="form-control" name="marca" placeholder="Marca" require>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Precio Compra</label>
                         <input type="number" class="form-control" name="preciocompra" placeholder="Precio Compra" require>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Precio Venta</label>
                         <input type="number" class="form-control" name="precioventa" placeholder="Precio Venta" require>
                         </div>
-                        <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Cantidad</label>
-                        <input type="number" class="form-control" name="cantidad" placeholder="Cantidad" require>
-                        </div>
+                        
                         <div class="form-group col-md-6">
                             <label class="control-label">Estado</label>
                             <select style="margin-bottom:15px;" name="estado" class="form-control" require>
